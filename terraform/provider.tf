@@ -10,5 +10,14 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
+
+  # These tags are added automatically to EVERY resource this provider creates
+  default_tags {
+    tags = {
+      Environment = var.environment
+      Owner       = var.owner
+      ManagedBy   = "terraform"
+    }
+  }
 }

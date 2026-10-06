@@ -1,3 +1,7 @@
+output "environment" {
+  value = var.environment
+}
+
 output "vpc_id" {
   value = data.aws_vpc.class_vpc.id
 }
@@ -19,9 +23,13 @@ output "ecs_cluster_name" {
 }
 
 output "ecs_service_name" {
-  value = "zeyaulhaq-flask-service"
+  value = local.service_name
 }
 
 output "container_name" {
-  value = "flask-app"
+  value = local.container_name
+}
+
+output "task_role_arn" {
+  value = aws_iam_role.ecs_task_role.arn
 }
